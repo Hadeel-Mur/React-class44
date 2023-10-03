@@ -5,14 +5,10 @@ import {  Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
-    <>
-    
       <Routes>
         <Route path="/" element={<Products />} />
         <Route path='/products/:id' element={<Product/>} />
       </Routes>
- 
-    </>
   
   );
 }

@@ -1,11 +1,17 @@
 import React, {useState, useEffect} from 'react'
 import { useParams} from 'react-router-dom'
+import { NavLink} from 'react-router-dom';
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
 
 function Product() {
+ 
+    
   const { id } = useParams();
   const [product, setProduct] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const [liked, setLiked] = useState(false)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,7 +35,9 @@ function Product() {
     }
 }, [id, loading])
 
-
+const toggleLiked = () => {
+    setLiked(!liked)
+}
 const Loading = () => {
     if (loading) {
         return <div>Loading... </div>
@@ -41,11 +49,20 @@ const Loading = () => {
 }
 
 const ShowProducts =() => {
+   
     return (
         <>
+        <div className='links'>
+            <NavLink exact to={'/'} >Products</NavLink>
+            <NavLink to={'/favourites/'}>Favourites</NavLink>
+            </div>
         <div className='col-md-6'>
+        <div className='item' onClick={toggleLiked}>
+            {liked ? <FavoriteOutlinedIcon/> : <FavoriteBorderOutlinedIcon/>}
+         </div>
             <img src={product.image} alt={product.title}
             height='auto' width='370px'/>
+            
         </div>
         <div className='col-md-6'>
             <h4 className='text-uppercase text-black-50'>{product.category}</h4>
@@ -58,13 +75,13 @@ const ShowProducts =() => {
     )
 }
   return (
-    
+    <div>
          <div className='container'>
                 <div className='row'>
                     {loading ? <Loading /> : <ShowProducts />}
                 </div>
          </div>
-   
+    </div>
   )
 }
 

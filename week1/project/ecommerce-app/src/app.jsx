@@ -1,5 +1,5 @@
 import { useState } from 'preact/hooks'
-import './app.css'
+import './index.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import productData from './fake-data/all-products'
 import List from './components/List'
@@ -24,4 +24,4 @@ return (
       </div>
     </div>
   )
-}
+}  

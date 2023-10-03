@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
-// import {Button} from 'bootstrap'
+
 
 
 function Products() {
@@ -17,7 +17,7 @@ function Products() {
                     throw new Error('Network response was not ok!')
                 }
                 const jsonData = await response.clone().json()
-                // console.log("Fetched data:", jsonData);
+                
                 setData(jsonData)
                 setLoading(false)
             } catch (error) {
@@ -45,7 +45,7 @@ function Products() {
     const filterItems = (cat) => {
         const newItems = data.filter((x) => x.category === cat)
         setFilter(newItems)
-        // console.log("Filtered items:", newItems);
+       
     }
 
     const ShowProducts = () => {
@@ -56,7 +56,7 @@ function Products() {
             filterItems(val)
         }
         const itemsToDisplay = filter || data || []
-        // console.log("Items to display:", itemsToDisplay);
+       
       
         return (
             <>
@@ -83,7 +83,7 @@ function Products() {
                 </div>
                 {itemsToDisplay.map((product) => {
                     return (
-                        <>
+                        
                             <div className='col-md-3 mb-4'>
                                 <div className='card h-100 text-center p-4' key={product.id}>
                                     <img
@@ -93,7 +93,7 @@ function Products() {
                                     </div>
                                 </div>
                             </div>
-                        </>
+                      
                     )
                 })}
             </>
@@ -102,7 +102,7 @@ function Products() {
 
 
     return (
-        <div>
+       
             <div className='container my-2 py-2'>
                 <div className='row'>
                     <div className='col-12 mb-2'>
@@ -115,7 +115,7 @@ function Products() {
                     {loading ? <Loading /> : <ShowProducts />}
                 </div>
             </div>
-        </div>
+        
     )
 }
 

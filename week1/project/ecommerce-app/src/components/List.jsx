@@ -7,7 +7,7 @@ function List({item}) {
          {item.map((val) => (
             <div key={val.id} className='col-md-4 col-sm-6 card my-3 border-0'>
                 <div className='card-img-top text-center'>
-                    <img src={val.image} alt='' className='w-75'></img>
+                    <img src={val.image} alt={val.title} className='w-75'></img>
                 </div>
                 <div className='card-body'>
                     <div className='card-title fw-bold fs-4'>
